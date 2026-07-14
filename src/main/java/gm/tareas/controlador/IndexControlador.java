@@ -1,7 +1,13 @@
 package gm.tareas.controlador;
 
+import gm.tareas.modelo.Tarea;
 import gm.tareas.servicio.TareaServicio;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +23,41 @@ public class IndexControlador implements Initializable {
     @Autowired
     private TareaServicio tareaServicio;
 
+    @FXML
+    private TableView<Tarea> tareaTabla;
+
+    @FXML
+    private TableColumn<Tarea, Integer> idTareaColumna;
+
+    @FXML
+    private TableColumn<Tarea, String> nombreTareaColumna;
+
+    @FXML
+    private TableColumn<Tarea, String> responsableColumna;
+
+    @FXML
+    private TableColumn<Tarea, String> estatusColumna;
+
+    private final ObservableList<Tarea> tareaList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tareaTabla.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        configurarColumnas();
+        listarTareas();
+    }
 
+    public void configurarColumnas() {
+        idTareaColumna.setCellValueFactory(new PropertyValueFactory<>("idTarea"));
+        nombreTareaColumna.setCellValueFactory(new PropertyValueFactory<>("nombreTarea"));
+        responsableColumna.setCellValueFactory(new PropertyValueFactory<>("responsable"));
+        estatusColumna.setCellValueFactory(new PropertyValueFactory<>("estatus"));
+    }
+
+    public void listarTareas() {
+        logger.info("Ejecutando Listado de Tareas");
+        tareaList.clear();
+        tareaList.addAll(tareaServicio.listarTareas());
+        tareaTabla.setItems(tareaList);
     }
 }
