@@ -14,7 +14,7 @@
             <font>
                 <Font name="System Bold" size="25.0" />
             </font></Label>
-        <TableView fx:id="tareaTabla" layoutX="284.0" layoutY="85.0" prefHeight="185.0" prefWidth="315.0">
+        <TableView fx:id="tareaTabla" layoutX="284.0" layoutY="85.0" onMouseClicked="#cargarTareaFormulario" prefHeight="185.0" prefWidth="315.0">
             <columns>
                 <TableColumn fx:id="idTareaColumna" prefWidth="35.33331298828125" text="ID" />
                 <TableColumn fx:id="nombreTareaColumna" prefWidth="104.0" text="Tarea" />
@@ -45,10 +45,10 @@
       </AnchorPane>
       <AnchorPane layoutX="49.0" layoutY="291.0" prefHeight="120.0" prefWidth="529.0">
          <children>
-            <Button fx:id="modificarBoton" layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#agregarTarea" prefHeight="36.0" prefWidth="67.0" style="-fx-background-color: #1d3557;" text="Agregar" textFill="#f1faee" />
-            <Button fx:id="eliminarBoton" layoutX="291.0" layoutY="37.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="59.0" style="-fx-background-color: #e63946;" text="Eliminar" textFill="#f1faee" />
-            <Button fx:id="modificarBoton" layoutX="156.0" layoutY="37.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="67.0" style="-fx-background-color: #1d3557;" text="Modificar" textFill="#f1faee" />
-            <Button fx:id="limpiarBoton" layoutX="412.0" layoutY="37.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="93.0" style="-fx-background-color: #ffd60a;" text="Limpiar Forma" />
+            <Button fx:id="agregarBoton" layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#agregarTarea" prefHeight="36.0" prefWidth="67.0" style="-fx-background-color: #1d3557;" text="Agregar" textFill="#f1faee" />
+            <Button fx:id="eliminarBoton" layoutX="291.0" layoutY="37.0" mnemonicParsing="false" onAction="#eliminarTarea" prefHeight="36.0" prefWidth="59.0" style="-fx-background-color: #e63946;" text="Eliminar" textFill="#f1faee" />
+            <Button fx:id="modificarBoton" layoutX="156.0" layoutY="37.0" mnemonicParsing="false" onAction="#modificarTarea" prefHeight="36.0" prefWidth="67.0" style="-fx-background-color: #1d3557;" text="Modificar" textFill="#f1faee" />
+            <Button fx:id="limpiarBoton" layoutX="412.0" layoutY="37.0" mnemonicParsing="false" onAction="#limpiarFormulario" prefHeight="36.0" prefWidth="93.0" style="-fx-background-color: #ffd60a;" text="Limpiar Forma" />
          </children>
       </AnchorPane>
     </children>
